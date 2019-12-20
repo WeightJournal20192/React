@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import WelcomePage from "./components/WelcomePage";
+import Login from './components/Login';
+import NewUser from './components/NewUser';
 import './App.css';
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
       <header className="App-header">
 
       </header>
+      <Route exact path='/' component={Login} />
+      <Route path='/newuser' component={NewUser} />
     </div>
   );
 }

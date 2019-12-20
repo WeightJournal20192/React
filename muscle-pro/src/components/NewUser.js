@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 // end styled-components
 
-const Login = () => {
+const NewUser = () => {
     
     const [userName, setUserName] = useState({
         user: '',
@@ -29,9 +29,9 @@ const Login = () => {
     return (
         <div>
             <nav>
-                <Link to='/newUser'>New Users</Link>
+                <Link to='/'>Back to Login</Link>
             </nav>
-            <h2>Current User Log In</h2>
+            <h2>New User Registration</h2>
             <form onSubmit={submitForm}>
                 <label htmlFor='username'>Enter User Name</label>
                 <input
@@ -63,4 +63,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default NewUser;
