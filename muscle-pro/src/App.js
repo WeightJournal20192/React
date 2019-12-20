@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <nav>
         <div className="Nav-links">
-          <NavLink to="/" className="App-name">Muscle Pro</NavLink>
+          <NavLink to="/WelcomePage" className="App-name">Muscle Pro</NavLink>
           <NavLink to="/Exercises">Exercises</NavLink>
           <NavLink to="/Profile">Profile</NavLink> 
           {/* this would include goals, measurments, progress pics? */}
@@ -21,6 +21,7 @@ function App() {
 
       </header>
       <Route exact path='/' component={Login} />
+      <Route path='/WelcomePage' component={WelcomePage} />
       <Route path='/newuser' component={NewUser} />
     </div>
   );
