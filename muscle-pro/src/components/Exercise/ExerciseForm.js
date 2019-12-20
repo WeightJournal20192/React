@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Exercises() {
+function ExerciseForm() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function Exercises() {
   )
 }
 
-export default Exercises
+export default ExerciseForm

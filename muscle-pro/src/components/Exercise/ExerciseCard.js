@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Exercises() {
+function ExerciseCard() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function Exercises() {
   )
 }
 
-export default Exercises
+export default ExerciseCard
