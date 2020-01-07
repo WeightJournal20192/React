@@ -14,8 +14,8 @@ function App() {
       </header>
       <Route exact path='/' component={Login} />
       <Route path='/newuser' component={NewUser} />
-      <Route path='/WelcomePage/:id' component={WelcomePage} />
-      <Route path='/Exercises/:id' component={Exercises} />
+      <Route path='/WelcomePage' component={WelcomePage} />
+      <Route path='/Exercises' component={Exercises} />
     </div>
   );
 }

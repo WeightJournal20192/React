@@ -30,10 +30,13 @@ const LoginButton = styled.button `
 const Exercises = ({ userName, history }) => {
     
     const [userExercise, setUserExercise] = useState({
-        muscleGroup: '',
-        exercise: '',
+        date: '',
+        muscle_group: '',
+        exercise_name: '',
+        weight_number: '',
         sets: '',
-        reps: ''
+        reps: '',
+        goals: ''
     });
 
     const handleChange = event => {
@@ -45,8 +48,9 @@ const Exercises = ({ userName, history }) => {
 
     const submitForm = event => {
         event.preventDefault();
-        history.push(`/WelcomePage/${userName}`);
-        setUserExercise({muscleGroup: '', exercise: '', sets: '', reps: '' });
+        //history.push(`/WelcomePage/${userName}`);
+        history.push(`/WelcomePage`);
+        setUserExercise({date: '', muscle_group: '', exercise_name: '', weight_number: '', sets: '', reps: '', goals: ''});
     };
     
     console.log('this is assigned to userExercise: ', {userExercise});
@@ -58,23 +62,41 @@ const Exercises = ({ userName, history }) => {
             </nav>
             <FormHeading>Enter Exercise Information</FormHeading>
             <FormSetup onSubmit={submitForm}>
-                <label htmlFor='muscleGroup'>Muscle Group</label>
+                <label htmlFor='date'>Date</label>
                 <EnterInput
-                    id='muscleGroup'
+                    id='date'
                     type='text'
-                    name='muscleGroup'
+                    name='date'
+                    placeholder='Enter Date'
+                    onChange={handleChange}
+                    value={userExercise.date}
+                />
+                <label htmlFor='muscle_group'>Muscle Group</label>
+                <EnterInput
+                    id='muscle_group'
+                    type='text'
+                    name='muscle_group'
                     placeholder='Enter Muscle Group'
                     onChange={handleChange}
-                    value={userExercise.muscleGroup}
+                    value={userExercise.muscle_group}
                 />
-                <label htmlFor='exercise'>Exercise</label>
+                <label htmlFor='exercise_name'>Exercise Name</label>
                 <EnterInput
-                    id='exercise'
+                    id='exercise_name'
                     type='text'
-                    name='exercise'
+                    name='exercise_name'
                     placeholder='Exercise Name'
                     onChange={handleChange}
-                    value={userExercise.exercise}
+                    value={userExercise.exercise_name}
+                />
+                <label htmlFor='weight_number'>Weight Lifted</label>
+                <EnterInput
+                    id='weight_number'
+                    type='text'
+                    name='weight_number'
+                    placeholder='Weight'
+                    onChange={handleChange}
+                    value={userExercise.weight_number}
                 />
                 <label htmlFor='sets'>Number of Sets</label>
                 <EnterInput
@@ -93,6 +115,15 @@ const Exercises = ({ userName, history }) => {
                     placeholder='Num Reps'
                     onChange={handleChange}
                     value={userExercise.reps}
+                />
+                <label htmlFor='goals'>Exercise Goals</label>
+                <EnterInput
+                    id='goals'
+                    type='text'
+                    name='goals'
+                    placeholder='Enter Goals'
+                    onChange={handleChange}
+                    value={userExercise.goals}
                 />
                 <LoginButton type='submit'>Submit Exercise</LoginButton>
             </FormSetup>

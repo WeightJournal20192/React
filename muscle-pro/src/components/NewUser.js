@@ -43,7 +43,8 @@ const NewUser = ({ history }) => {
 
     const submitForm = event => {
         event.preventDefault();
-        history.push(`/WelcomePage/${userName.username}`);
+        //history.push(`/WelcomePage/${userName.username}`);
+        history.push(`/WelcomePage`);
         setUserName({user: '', password: '' });
     };
 
