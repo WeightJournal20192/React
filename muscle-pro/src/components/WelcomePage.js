@@ -31,17 +31,7 @@ const ListItems = styled.li `
 const WelcomePage = ({ id, exercise }) => {
     
     // set default exercise values to state
-    const [exercises, setExercises] = useState([
-        {
-            date: '',
-            muscle_group: '',
-            exercise_name: '',
-            weight_number: '',
-            sets: '',
-            reps: '',
-            goals: ''
-        }
-    ]);
+    const [exercises, setExercises] = useState([]);
 
     // create function to add new exercises, exercise is passed from Exercises.js
     const addNewExercise = exercise => {
@@ -81,7 +71,7 @@ const WelcomePage = ({ id, exercise }) => {
             <nav>
                 <Link to='/Exercises'>Add New Exercises</Link>
             </nav>
-            <Exercises addNewExercise={addNewExercise} />
+          {/*  <Exercises addNewExercise={addNewExercise} /> */}
             {/* exercises.map over data here and render to UI */}
             {exercises.map(exercise => {
                 return (

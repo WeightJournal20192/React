@@ -4,6 +4,8 @@ import Login from './components/Login';
 import NewUser from './components/NewUser';
 import WelcomePage from './components/WelcomePage';
 import Exercises from './components/Exercises';
+import { userName } from './components/Login';
+import { addNewExercise } from './components/WelcomePage';
 import './App.css';
 
 function App() {
@@ -12,10 +14,26 @@ function App() {
       <header className="App-header">
         <h1>Muscle Pro</h1>
       </header>
-      <Route exact path='/' component={Login} />
-      <Route exact path='/newuser' component={NewUser} />
-      <Route exact path='/WelcomePage' component={WelcomePage} />
-      <Route exact path='/Exercises' component={Exercises} />
+     {/*} <Route
+        exact path='/'
+        render={routeProps => {
+          return <WelcomePage {...routeProps} id={userName.username} />;
+        }}
+      />
+      <Route
+        exact path='/NewUser'
+        render={routeProps => {
+          return <WelcomePage {...routeProps} id={userName.username} />;
+        }}
+      />
+      */}
+    {/*  <Route
+        exact path='/WelcomePage'
+        render={routeProps => {
+          return <Exercises {...routeProps} addNewExercise={addNewExercise} />;
+        }}
+      /> */}
+      <Route exact path='/Exercises' component={Exercises} /> 
     </div>
   );
 }
