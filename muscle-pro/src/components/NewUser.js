@@ -27,7 +27,7 @@ const LoginButton = styled.button `
 `;
 // end styled-components
 
-const Login = ({ history }) => {
+const NewUser = ({ history }) => {
     
     const [userName, setUserName] = useState({
         username: '',
@@ -48,15 +48,15 @@ const Login = ({ history }) => {
         setUserName({user: '', password: '' });
     };
 
-    console.log('this is assigned userName object: ', {userName});
+    console.log('this is assigned userName Object: ', {userName});
     console.log('this is assigned password: ', userName.password);
     
     return (
         <div>
             <nav>
-                <Link to='/newUser'>New Users</Link>
+                <Link to='/'>Back to Login</Link>
             </nav>
-            <FormHeading>Current User Log In</FormHeading>
+            <FormHeading>New User Registration</FormHeading>
             <FormSetup onSubmit={submitForm}>
                 <label htmlFor='username'>User Name</label>
                 <EnterInput
@@ -83,4 +83,4 @@ const Login = ({ history }) => {
     );
 };
 
-export default Login;
+export default NewUser;
