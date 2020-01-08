@@ -44,8 +44,8 @@ const NewUser = ({ history }) => {
     const submitForm = event => {
         event.preventDefault();
         //history.push(`/WelcomePage/${userName.username}`);
-        history.push(`/WelcomePage`);
-        setUserName({user: '', password: '' });
+        history.push('/WelcomePage');
+        //setUserName({user: '', password: '' });
     };
 
     console.log('this is assigned userName Object: ', {userName});
@@ -76,9 +76,9 @@ const NewUser = ({ history }) => {
                     onChange={handleChange}
                     value={userName.password}
                 />
-                <LoginButton type='submit'>Submit</LoginButton>
+                <LoginButton type='submit'>Register</LoginButton>
             </FormSetup>
-            <WelcomePage id={userName} />
+            <WelcomePage id={userName.username} />
         </div>
     );
 };

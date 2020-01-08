@@ -13,9 +13,9 @@ function App() {
         <h1>Muscle Pro</h1>
       </header>
       <Route exact path='/' component={Login} />
-      <Route path='/newuser' component={NewUser} />
-      <Route path='/WelcomePage' component={WelcomePage} />
-      <Route path='/Exercises' component={Exercises} />
+      <Route exact path='/newuser' component={NewUser} />
+      <Route exact path='/WelcomePage' component={WelcomePage} />
+      <Route exact path='/Exercises' component={Exercises} />
     </div>
   );
 }
