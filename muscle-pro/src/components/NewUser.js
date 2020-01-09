@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import WelcomePage from './WelcomePage';
 import styled from 'styled-components';
 
@@ -27,12 +28,15 @@ const LoginButton = styled.button `
 `;
 // end styled-components
 
-const NewUser = ({ history }) => {
-    
+const NewUser = ({ history, userName, setUserName }) => {
+/*    
     const [userName, setUserName] = useState({
         username: '',
         password: ''
     });
+*/
+
+const { register, handleSubmit, errors } = useForm();
 
     const handleChange = event => {
         //console.log('event', event.target.value);
@@ -42,10 +46,10 @@ const NewUser = ({ history }) => {
     };
 
     const submitForm = event => {
-        event.preventDefault();
+        //event.preventDefault();
         //history.push(`/WelcomePage/${userName.username}`);
         history.push('/WelcomePage');
-        //setUserName({user: '', password: '' });
+        setUserName({user: '', password: '' });
     };
 
     console.log('this is assigned userName Object: ', {userName});
@@ -57,7 +61,7 @@ const NewUser = ({ history }) => {
                 <Link to='/'>Back to Login</Link>
             </nav>
             <FormHeading>New User Registration</FormHeading>
-            <FormSetup onSubmit={submitForm}>
+            <FormSetup onSubmit={handleSubmit(submitForm)}>
                 <label htmlFor='username'>User Name</label>
                 <EnterInput
                     id='username'
@@ -66,7 +70,14 @@ const NewUser = ({ history }) => {
                     placeholder='Minimum 5 Characters'
                     onChange={handleChange}
                     value={userName.username}
+                    ref={register({ required: true, minLength: 5 })}
                 />
+                {errors.username && errors.username.type === 'required' && (
+                    <p>This is required</p>
+                )}
+                {errors.username && errors.username.type === 'minLength' && (
+                    <p>Must be 5 characters in length</p>
+                )}
                 <label htmlFor='password'>Password</label>
                 <EnterInput
                     id='password'
@@ -75,7 +86,14 @@ const NewUser = ({ history }) => {
                     placeholder='Minimum 5 Characters'
                     onChange={handleChange}
                     value={userName.password}
+                    ref={register({ required: true, minLength: 5 })}
                 />
+                {errors.password && errors.password.type === 'required' && (
+                    <p>This is required</p>
+                )}
+                {errors.password && errors.password.type === 'minLength' && (
+                    <p>Must be 5 characters in length</p>
+                )}
                 <LoginButton type='submit'>Register</LoginButton>
             </FormSetup>
         {/*    <WelcomePage id={userName.username} /> */}

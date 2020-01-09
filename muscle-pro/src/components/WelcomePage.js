@@ -28,11 +28,11 @@ const ListItems = styled.li `
 `;
 // end styled-components
 
-const WelcomePage = ({ id, exercise }) => {
+const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises }) => {
     
     // set default exercise values to state
-    const [exercises, setExercises] = useState([]);
-
+  //  const [exercises, setExercises] = useState([]);
+  /*
     // create function to add new exercises, exercise is passed from Exercises.js
     const addNewExercise = exercise => {
         const newExercise = {
@@ -50,9 +50,10 @@ const WelcomePage = ({ id, exercise }) => {
     const newExerciseArray = [...exercises, newExercise];
     setExercises(newExerciseArray);
   };
-/*
+  */
+
   useEffect(() => {
-    axios.get(`https://weight-lifting1.herokuapp.com/api/user`)
+    axios.get(`https://weight-lifting1.herokuapp.com/api/user/all`)
       .then(response => {
         console.log(response);
         setExercises(response);
@@ -61,7 +62,7 @@ const WelcomePage = ({ id, exercise }) => {
         console.log("Did not connect to API", error);
       })
   }, []);
-*/
+
     return (
         <div>
             <header>
@@ -69,7 +70,8 @@ const WelcomePage = ({ id, exercise }) => {
                 <h2>Weight Lifting Journal</h2>
             </header>
             <nav>
-                <Link to='/Exercises'>Add New Exercises</Link>
+                <Link to='/Exercises'>Add New Exercises</Link><br />
+                <Link to='/'>Logout</Link>
             </nav>
           {/*  <Exercises addNewExercise={addNewExercise} /> */}
             {/* exercises.map over data here and render to UI */}
@@ -92,4 +94,4 @@ const WelcomePage = ({ id, exercise }) => {
     );
 };
 
-export default WelcomePage;
+export  default WelcomePage;

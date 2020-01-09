@@ -58,7 +58,7 @@ const Exercises = ({ addNewExercise, history }) => {
     return (
         <div>
             <nav>
-                <Link to={'/WelcomePage'}>Back to Results Page</Link>
+                <Link to='/WelcomePage'>Back to Results Page</Link>
                 <Link to='/'>Logout</Link>
             </nav>
             <FormHeading>Enter Exercise Information</FormHeading>
