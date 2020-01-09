@@ -8,7 +8,7 @@ import Exercises from './components/Exercises';
 //import { addNewExercise } from './components/WelcomePage';
 import './App.css';
 import {createStore} from "redux";
-// import {FamilyProvider} from "./components/FamilyContext";
+import {UserProvider} from "./utils/UserContext";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
@@ -39,7 +39,8 @@ setExercises(newExerciseArray);
 };
 
   return (
-    <div className="App">
+    <UserProvider value={addNewExercise}>
+      <div className="App">
       <header className="App-header">
         <h1>Muscle Pro</h1>
       </header>
@@ -64,6 +65,7 @@ setExercises(newExerciseArray);
         }}
       />
     </div>
+    </UserProvider>
   );
 }
 

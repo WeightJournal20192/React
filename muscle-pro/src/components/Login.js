@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import WelcomePage from './WelcomePage';
 import styled from 'styled-components';
+import axios from 'axios';
 
 // styled-components
 const FormHeading = styled.h2 `
@@ -29,12 +30,12 @@ const LoginButton = styled.button `
 // end styled-components
 
 const Login = ({ history, userName, setUserName }) => {
-/*    
-    const [userName, setUserName] = useState({
-        username: '',
-        password: ''
-    });
-*/
+   
+    // const [userName, setUserName] = useState({
+    //     username: '',
+    //     password: ''
+    // });
+
 
     const { register, handleSubmit, errors } = useForm();
 
@@ -45,11 +46,19 @@ const Login = ({ history, userName, setUserName }) => {
         //console.log('this is the handlechange username: ', {userName});
     };
 
-    const submitForm = event => {
+    const submitForm = e => {
         //event.preventDefault();
         //history.push(`/WelcomePage/${userName.username}`);
-        history.push('/WelcomePage');
-        setUserName({user: '', password: '' });
+        // history.push('/WelcomePage');
+        // setUserName({user: '', password: '' });
+        // e.preventDefault();
+        axios
+          .post("https://weight-lifting1.herokuapp.com/api/auth/login", userName)
+          .then(res => {
+            localStorage.setItem("token", res.data.payload);
+            history.push("/WelcomePage");
+          })
+          .catch(err => console.error(err));
     };
 
     console.log('this is assigned userName object: ', {userName});

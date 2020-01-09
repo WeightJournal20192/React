@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { UserConsumer } from '../utils/UserContext';
 
 // styled-components
 const FormHeading = styled.h2 `
@@ -56,7 +57,8 @@ const Exercises = ({ addNewExercise, history }) => {
     console.log('this is assigned to exercise: ', {exercise});
     
     return (
-        <div>
+        <UserConsumer>
+            <div>
             <nav>
                 <Link to='/WelcomePage'>Back to Results Page</Link>
                 <Link to='/'>Logout</Link>
@@ -129,6 +131,7 @@ const Exercises = ({ addNewExercise, history }) => {
                 <LoginButton type='submit'>Submit Exercise Entry</LoginButton>
             </FormSetup>
         </div>
+        </UserConsumer>
     );
 };
 
