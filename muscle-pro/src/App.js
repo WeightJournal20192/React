@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import NewUser from './components/NewUser';
 import WelcomePage from './components/WelcomePage';
@@ -16,8 +16,11 @@ function App() {
         <header className="App-header">
           <h1>Muscle Pro</h1>
         </header>
+        <Link component={WelcomePage} />
+
         <Route exact path='/' component={Login} />
         <Route path='/newuser' component={NewUser} />
+        
         <PrivateRoute exact path='/WelcomePage' component={WelcomePage} />
         <PrivateRoute exact path='/Exercises' component={Exercises} />
       </div>

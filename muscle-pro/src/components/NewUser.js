@@ -78,7 +78,7 @@ const NewUser = ({ history }) => {
                 />
                 <LoginButton type='submit'>Submit</LoginButton>
             </FormSetup>
-            <WelcomePage id={userName} />
+            {/* <WelcomePage id={userName} /> */}
         </div>
     );
 };
