@@ -55,7 +55,8 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
   */
 
   useEffect(() => {
-    axios.get(`https://weight-lifting1.herokuapp.com/api/user/all`)
+    axiosWithAuth()
+    .get(`https://weight-lifting1.herokuapp.com/api/user/all`)
       .then(response => {
         console.log(response);
         setExercises(response);
