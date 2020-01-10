@@ -2,35 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Exercises from './Exercises';
 import axios from 'axios';
-import styled from 'styled-components';
-import {axiosWithAuth} from "../utils/axiosWithAuth";
-import EditExerciseForm from './EditExerciseForm';
+import {axiosWithAuth} from "./utils/AxiosWithAuth";
+import EditExercise from './EditExercise';
 
-// styled-components
-const Card = styled.div `
-  border: solid black 2px;
-  margin: 50px 250px 50px 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: blue;
-`;
+// import styled from 'styled-components';
 
-const Date = styled.h1 `
-  color: yellow;
-  font-weight: bold;
-`;
+// // styled-components
+// const Card = styled.div `
+//   border: solid black 2px;
+//   margin: 50px 250px 50px 250px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: blue;
+// `;
 
-const Info = styled.ul `
-  list-style-type: none;
-`;
+// const Date = styled.h1 `
+//   color: yellow;
+//   font-weight: bold;
+// `;
 
-const ListItems = styled.li `
-  color: white;
-`;
-// end styled-components
+// const Info = styled.ul `
+//   list-style-type: none;
+// `;
 
-const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises }) => {
+// const ListItems = styled.li `
+//   color: white;
+// `;
+// // end styled-components
+
+// const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises }) => {
     
     // set default exercise values to state
   //  const [exercises, setExercises] = useState([]);
@@ -66,6 +67,17 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
       })
   }, []);
 
+  // useEffect(() => {
+  //   axios.get(`https://weight-lifting1.herokuapp.com/api/user/all`)
+  //     .then(response => {
+  //       console.log(response);
+  //       setExercises(response);
+  //     })
+  //     .catch(error => {
+  //       console.log("Did not connect to API", error);
+  //     })
+  // }, []);
+
     return (
         <div>
             <header>
@@ -81,20 +93,9 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
             {/* exercises.map over data here and render to UI */}
             {exercises.map(exercise => {
                 return (
-                    <Card>
-                        <Date>Date: {exercise.date}</Date>
-                        <Info>
-                            <ListItems>Muscle Group: {exercise.muscle_group}</ListItems>
-                            <ListItems>Name of Exercise: {exercise.exercise_name}</ListItems>
-                            <ListItems>Weight Lifted: {exercise.weight_number}</ListItems>
-                            <ListItems>Sets: {exercise.sets}</ListItems>
-                            <ListItems>Reps: {exercise.reps}</ListItems>
-                            <ListItems>Goals: {exercise.goals}</ListItems>
-                        </Info>
-                    </Card>
+                   
                 )
             })}
-            <EditExerciseForm/>
         </div>
     );
 };
