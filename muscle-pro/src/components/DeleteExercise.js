@@ -1,6 +1,31 @@
+// import React, { Component } from 'react';
+
+// import {connect} from 'react-redux';
+
+// class DeleteExercise extends Component {
+//   render() {
+//   return (
+//     <div>
+
+//       <button 
+//       onClick={()=>this.props.dispatch({type:'DELETE_EXERCISE_START',id:this.props.post.id})}>
+//       Delete</button>
+//     </div>
+//   );
+//  }
+// }
+// export default connect()(DeleteExercise);
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react'
 
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+import  axiosWithAuth  from '../utils/axiosWithAuth'
 
 function DeleteExercise(props) {
 
@@ -39,3 +64,4 @@ function DeleteExercise(props) {
 }
 
 export default DeleteExercise
+
