@@ -52,7 +52,8 @@ const Login = ({ history, userName, setUserName }) => {
         axios
           .post("https://weight-lifting1.herokuapp.com/api/auth/login", userName)
           .then(res => {
-            localStorage.setItem("token", res.data.payload);
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem('id', res.data.user_id)
             history.push("/WelcomePage");
             setUserName({user: '', password: '' });
           })

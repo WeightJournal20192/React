@@ -57,8 +57,8 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
     axiosWithAuth()
     .get(`https://weight-lifting1.herokuapp.com/api/user/all`)
       .then(response => {
-        console.log(response);
-        setExercises(response);
+        console.log(response.data);
+        setExercises(response.data);
       })
       .catch(error => {
         console.log("Did not connect to API", error);
