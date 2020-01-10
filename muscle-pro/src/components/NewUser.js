@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import axiosWithAuth from './axiosWithAuth';
 import WelcomePage from './WelcomePage';
 import styled from 'styled-components';
 
@@ -48,8 +49,18 @@ const { register, handleSubmit, errors } = useForm();
     const submitForm = event => {
         //event.preventDefault();
         //history.push(`/WelcomePage/${userName.username}`);
-        history.push('/WelcomePage');
-        setUserName({user: '', password: '' });
+            //e.preventDefault();
+            axiosWithAuth()
+                .post('https://todoappp1.herokuapp.com/api/auth/register', userName)
+                .then(res => {
+                    console.log(res)
+                    axiosWithAuth().post('https://weight-lifting1.herokuapp.com/api/auth/login', userName)
+                        .then(res =>
+                            localStorage.setItem('token', res.data.token),
+                            localStorage.setItem('id', res.data.user_id),
+                            history.push('/WelcomePage')
+                            )
+                })
     };
 
     console.log('this is assigned userName Object: ', {userName});
