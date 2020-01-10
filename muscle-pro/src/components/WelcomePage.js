@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axiosWithAuth from './axiosWithAuth';
 import Exercises from './Exercises';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -53,7 +54,8 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
   */
 
   useEffect(() => {
-    axios.get(`https://weight-lifting1.herokuapp.com/api/user/all`)
+    axiosWithAuth()
+    .get(`https://weight-lifting1.herokuapp.com/api/user/all`)
       .then(response => {
         console.log(response);
         setExercises(response);
