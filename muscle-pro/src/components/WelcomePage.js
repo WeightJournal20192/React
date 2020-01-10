@@ -48,6 +48,7 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
   const DeleteHandler = e => {
       e.preventDefault();
     //   axioswithauth()
+    setExercises(exercises.filter(exr => exr.exercise !== exercise))
   }
 
     return (

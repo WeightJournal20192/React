@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 
-import  axiosWithAuth  from '../utils/axiosWithAuth'
+import  axiosWithAuth  from '../components/utils/AxiosWithAuth';
 
 function DeleteExercise(props) {
 
