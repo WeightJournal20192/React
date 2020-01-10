@@ -1,27 +1,3 @@
-// import React, { Component } from 'react';
-
-// import {connect} from 'react-redux';
-
-// class DeleteExercise extends Component {
-//   render() {
-//   return (
-//     <div>
-
-//       <button 
-//       onClick={()=>this.props.dispatch({type:'DELETE_EXERCISE_START',id:this.props.post.id})}>
-//       Delete</button>
-//     </div>
-//   );
-//  }
-// }
-// export default connect()(DeleteExercise);
-
-
-
-
-
-
-
 
 import React, { useState, useEffect } from 'react'
 
@@ -48,7 +24,7 @@ function DeleteExercise(props) {
     const deleteExercise = (event, exercise) => {
         event.preventDefault()
         axiosWithAuth()
-            .delete(`https://weight-lifting1.herokuapp.com/api/user/delete`)
+            .delete(`https://weight-lifting1.herokuapp.com/api/user/delete/${exercise}`)
             .then(res => {
                 console.log(res)
                 // props.history.push('/')

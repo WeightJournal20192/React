@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from './components/Login';
 import NewUser from './components/NewUser';
 import WelcomePage from './components/WelcomePage';
 import Exercises from './components/Exercises';
+import Reducer from './reducers/reducers';
 
 import './App.css';
 
@@ -57,6 +58,7 @@ setExercises(newExerciseArray);
           return <Exercises {...routeProps} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
         }}
       />
+    
     </div>
   );
 }

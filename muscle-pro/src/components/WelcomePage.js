@@ -54,7 +54,7 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
             <nav>
                 <Link to='/Exercises'>Add New Exercises</Link>
                 <Link to='/'>Logout</Link>
-                {/* <DeleteExercise /> */}
+                <DeleteExercise />
             </nav>
             {exercises.map(exercise => {
                 return (
