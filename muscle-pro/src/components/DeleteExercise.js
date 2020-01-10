@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+import  axiosWithAuth  from '../utils/axiosWithAuth'
 
 function DeleteExercise(props) {
 
@@ -23,7 +23,7 @@ function DeleteExercise(props) {
     const deleteExercise = (event, exercise) => {
         event.preventDefault()
         axiosWithAuth()
-            .delete(`https://weight-lifting1.herokuapp.com/api/user/delete`)
+            .delete(`https://weight-lifting1.herokuapp.com/api/user/delete`, exercise)
             .then(res => {
                 console.log(res)
                 // props.history.push('/')
