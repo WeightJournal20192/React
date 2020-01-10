@@ -59,7 +59,7 @@ const Login = ({ history, userName, setUserName }) => {
             history.push("/WelcomePage");
           })
           .catch(err => console.error(err));
-    };5
+    };
 
     console.log('this is assigned userName object: ', {userName});
     console.log('this is assigned username: ', userName.username);

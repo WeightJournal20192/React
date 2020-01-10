@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Exercises from './Exercises';
 import axios from 'axios';
 import styled from 'styled-components';
+import {axiosWithAuth} from "../utils/axiosWithAuth";
+import EditExerciseForm from './EditExerciseForm';
 
 // styled-components
 const Card = styled.div `
@@ -91,6 +93,7 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
                     </Card>
                 )
             })}
+            <EditExerciseForm/>
         </div>
     );
 };

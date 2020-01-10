@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { 
+  // Switch, 
+  Route,
+ } from 'react-router-dom';
 import Login from './components/Login';
 import NewUser from './components/NewUser';
 import WelcomePage from './components/WelcomePage';
@@ -40,29 +43,31 @@ setExercises(newExerciseArray);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Muscle Pro</h1>
-      </header>
-      <Route
-        exact path='/' render={routeProps => {
-          return <Login {...routeProps} userName={userName} setUserName={setUserName} />;
-        }}
-      />
-       <Route
-        exact path='/NewUser' render={routeProps => {
-          return <NewUser {...routeProps} userName={userName} setUserName={setUserName} />;
-        }}
-      />
-       <Route
-        exact path='/WelcomePage' render={routeProps => {
-          return <WelcomePage {...routeProps} userName={userName} setUserName={setUserName} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
-        }}
-      />
-      <Route
-        exact path='/Exercises' render={routeProps => {
-          return <Exercises {...routeProps} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
-        }}
-      />
+      {/* <Switch> */}
+        <header className="App-header">
+          <h1>Muscle Pro</h1>
+        </header>
+        <Route
+          exact path='/' render={routeProps => {
+            return <Login {...routeProps} userName={userName} setUserName={setUserName} />;
+          }}
+        />
+         <Route
+          exact path='/NewUser' render={routeProps => {
+            return <NewUser {...routeProps} userName={userName} setUserName={setUserName} />;
+          }}
+        />
+         <Route
+          exact path='/WelcomePage' render={routeProps => {
+            return <WelcomePage {...routeProps} userName={userName} setUserName={setUserName} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
+          }}
+        />
+        <Route
+          exact path='/Exercises' render={routeProps => {
+            return <Exercises {...routeProps} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
+          }}
+        />
+      {/* </Switch> */}
     </div>
   );
 }
