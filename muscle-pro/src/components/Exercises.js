@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import WelcomePage from './WelcomePage';
 import styled from 'styled-components';
 
 // styled-components
@@ -27,9 +26,9 @@ const LoginButton = styled.button `
 `;
 // end styled-components
 
-const Exercises = ({ userName, history }) => {
+const Exercises = ({ addNewExercise, history }) => {
     
-    const [userExercise, setUserExercise] = useState({
+    const [exercise, setExercise] = useState({
         date: '',
         muscle_group: '',
         exercise_name: '',
@@ -42,23 +41,25 @@ const Exercises = ({ userName, history }) => {
     const handleChange = event => {
         //console.log('event', event.target.value);
 
-        setUserExercise({...userExercise, [event.target.name]: event.target.value });
+        setExercise({...exercise, [event.target.name]: event.target.value });
         //console.log('this is the handlechange userExercise: ', {userExercise});
     };
 
     const submitForm = event => {
         event.preventDefault();
         //history.push(`/WelcomePage/${userName}`);
-        history.push(`/WelcomePage`);
-        setUserExercise({date: '', muscle_group: '', exercise_name: '', weight_number: '', sets: '', reps: '', goals: ''});
+        addNewExercise(exercise);
+        history.push('/WelcomePage');
+        setExercise({date: '', muscle_group: '', exercise_name: '', weight_number: '', sets: '', reps: '', goals: ''});
     };
     
-    console.log('this is assigned to userExercise: ', {userExercise});
+    console.log('this is assigned to exercise: ', {exercise});
     
     return (
         <div>
             <nav>
-                <Link to={`/WelcomePage/${userName}`}>Back to Results Page</Link>
+                <Link to='/WelcomePage'>Back to Results Page</Link>
+                <Link to='/'>Logout</Link>
             </nav>
             <FormHeading>Enter Exercise Information</FormHeading>
             <FormSetup onSubmit={submitForm}>
@@ -69,7 +70,7 @@ const Exercises = ({ userName, history }) => {
                     name='date'
                     placeholder='Enter Date'
                     onChange={handleChange}
-                    value={userExercise.date}
+                    value={exercise.date}
                 />
                 <label htmlFor='muscle_group'>Muscle Group</label>
                 <EnterInput
@@ -78,7 +79,7 @@ const Exercises = ({ userName, history }) => {
                     name='muscle_group'
                     placeholder='Enter Muscle Group'
                     onChange={handleChange}
-                    value={userExercise.muscle_group}
+                    value={exercise.muscle_group}
                 />
                 <label htmlFor='exercise_name'>Exercise Name</label>
                 <EnterInput
@@ -87,7 +88,7 @@ const Exercises = ({ userName, history }) => {
                     name='exercise_name'
                     placeholder='Exercise Name'
                     onChange={handleChange}
-                    value={userExercise.exercise_name}
+                    value={exercise.exercise_name}
                 />
                 <label htmlFor='weight_number'>Weight Lifted</label>
                 <EnterInput
@@ -96,7 +97,7 @@ const Exercises = ({ userName, history }) => {
                     name='weight_number'
                     placeholder='Weight'
                     onChange={handleChange}
-                    value={userExercise.weight_number}
+                    value={exercise.weight_number}
                 />
                 <label htmlFor='sets'>Number of Sets</label>
                 <EnterInput
@@ -105,7 +106,7 @@ const Exercises = ({ userName, history }) => {
                     name='sets'
                     placeholder='Num Sets'
                     onChange={handleChange}
-                    value={userExercise.sets}
+                    value={exercise.sets}
                 />
                 <label htmlFor='reps'>Repetitions</label>
                 <EnterInput
@@ -114,7 +115,7 @@ const Exercises = ({ userName, history }) => {
                     name='reps'
                     placeholder='Num Reps'
                     onChange={handleChange}
-                    value={userExercise.reps}
+                    value={exercise.reps}
                 />
                 <label htmlFor='goals'>Exercise Goals</label>
                 <EnterInput
@@ -123,11 +124,10 @@ const Exercises = ({ userName, history }) => {
                     name='goals'
                     placeholder='Enter Goals'
                     onChange={handleChange}
-                    value={userExercise.goals}
+                    value={exercise.goals}
                 />
-                <LoginButton type='submit'>Submit Exercise</LoginButton>
+                <LoginButton type='submit'>Submit Exercise Entry</LoginButton>
             </FormSetup>
-            <WelcomePage id={userName} exercise={userExercise} />
         </div>
     );
 };

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import WelcomePage from './WelcomePage';
 import styled from 'styled-components';
+import axios from 'axios';
 
 // styled-components
 const FormHeading = styled.h2 `
@@ -27,12 +29,15 @@ const LoginButton = styled.button `
 `;
 // end styled-components
 
-const Login = ({ history }) => {
-    
-    const [userName, setUserName] = useState({
-        username: '',
-        password: ''
-    });
+const Login = ({ history, userName, setUserName }) => {
+   
+    // const [userName, setUserName] = useState({
+    //     username: '',
+    //     password: ''
+    // });
+
+
+    const { register, handleSubmit, errors } = useForm();
 
     const handleChange = event => {
         //console.log('event', event.target.value);
@@ -41,12 +46,20 @@ const Login = ({ history }) => {
         //console.log('this is the handlechange username: ', {userName});
     };
 
-    const submitForm = event => {
-        event.preventDefault();
+    const submitForm = e => {
+        //event.preventDefault();
         //history.push(`/WelcomePage/${userName.username}`);
-        history.push('/WelcomePage');
-        //setUserName({user: '', password: '' });
-    };
+        // history.push('/WelcomePage');
+        // setUserName({user: '', password: '' });
+        // e.preventDefault();
+        axios
+          .post("https://weight-lifting1.herokuapp.com/api/auth/login", userName)
+          .then(res => {
+            localStorage.setItem("token", res.data.payload);
+            history.push("/WelcomePage");
+          })
+          .catch(err => console.error(err));
+    };5
 
     console.log('this is assigned userName object: ', {userName});
     console.log('this is assigned username: ', userName.username);
@@ -58,7 +71,7 @@ const Login = ({ history }) => {
                 <Link to='/newUser'>New User? Register Here</Link>
             </nav>
             <FormHeading>Current User Log In</FormHeading>
-            <FormSetup onSubmit={submitForm}>
+            <FormSetup onSubmit={handleSubmit(submitForm)}>
                 <label htmlFor='username'>User Name</label>
                 <EnterInput
                     id='username'
@@ -67,7 +80,14 @@ const Login = ({ history }) => {
                     placeholder='Minimum 5 Characters'
                     onChange={handleChange}
                     value={userName.username}
+                    ref={register({ required: true, minLength: 5 })}
                 />
+                {errors.username && errors.username.type === 'required' && (
+                    <p>This is required</p>
+                )}
+                {errors.username && errors.username.type === 'minLength' && (
+                    <p>Must be 5 characters in length</p>
+                )}
                 <label htmlFor='password'>Password</label>
                 <EnterInput
                     id='password'
@@ -76,7 +96,14 @@ const Login = ({ history }) => {
                     placeholder='Minimum 5 Characters'
                     onChange={handleChange}
                     value={userName.password}
+                    ref={register({ required: true, minLength: 5 })}
                 />
+                {errors.password && errors.password.type === 'required' && (
+                    <p>This is required</p>
+                )}
+                {errors.password && errors.password.type === 'minLength' && (
+                    <p>Must be 5 characters in length</p>
+                )}
                 <LoginButton type='submit'>Log In</LoginButton>
             </FormSetup>
            {/*<WelcomePage id={userName.username} /> */}
