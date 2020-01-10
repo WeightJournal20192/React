@@ -70,6 +70,7 @@
 //                 <h2>Weight Lifting Journal</h2>
 //             </header>
 //             <nav>
+
 //                 <Link to='/Exercises'>Add New Exercises</Link><br />
 //                 <Link to='/'>Logout</Link>
 //             </nav>

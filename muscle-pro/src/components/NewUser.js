@@ -88,6 +88,7 @@
 //                     value={userName.password}
 //                     ref={register({ required: true, minLength: 5 })}
 //                 />
+
 //                 {errors.password && errors.password.type === 'required' && (
 //                     <p>This is required</p>
 //                 )}
@@ -99,6 +100,6 @@
 //         {/*    <WelcomePage id={userName.username} /> */}
 //         </div>
 //     );
-// };
+
 
 // export default NewUser;
