@@ -4,7 +4,7 @@ import Login from './components/Login';
 import NewUser from './components/NewUser';
 import WelcomePage from './components/WelcomePage';
 import Exercises from './components/Exercises';
-import Reducer from './reducers/reducers';
+
 
 import './App.css';
 

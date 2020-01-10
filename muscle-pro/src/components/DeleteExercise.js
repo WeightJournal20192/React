@@ -24,7 +24,7 @@ function DeleteExercise(props) {
     const deleteExercise = (event, exercise) => {
         event.preventDefault()
         axiosWithAuth()
-            .delete(`https://weight-lifting1.herokuapp.com/api/user/delete/${exercise}`)
+            .delete(`https://weight-lifting1.herokuapp.com/api/user/delete`, exercise)
             .then(res => {
                 console.log(res)
                 // props.history.push('/')

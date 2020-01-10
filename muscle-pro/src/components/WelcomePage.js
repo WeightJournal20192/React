@@ -45,6 +45,11 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
       })
   }, []);
 
+  const DeleteHandler = e => {
+      e.preventDefault();
+    //   axioswithauth()
+  }
+
     return (
         <div>
             <header>
@@ -54,7 +59,7 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
             <nav>
                 <Link to='/Exercises'>Add New Exercises</Link>
                 <Link to='/'>Logout</Link>
-                <DeleteExercise />
+                
             </nav>
             {exercises.map(exercise => {
                 return (
@@ -68,6 +73,7 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
                             <ListItems>Reps: {exercise.reps}</ListItems>
                             <ListItems>Goals: {exercise.goals}</ListItems>
                         </Info>
+                        <button onClick={DeleteHandler}>delete</button>
                     </Card>
                 )
             })}
