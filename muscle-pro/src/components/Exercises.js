@@ -24,6 +24,14 @@ const EnterInput = styled.input `
 const LoginButton = styled.button `
     margin-top: 30px;
 `;
+
+const DeleteButton = styled.button `
+    margin-top: 30px;
+`;
+
+const EditButton = styled.button `
+    margin-top: 30px;
+`;
 // end styled-components
 
 const Exercises = ({ addNewExercise, history }) => {
@@ -54,6 +62,35 @@ const Exercises = ({ addNewExercise, history }) => {
     };
     
     console.log('this is assigned to exercise: ', {exercise});
+
+
+    // const DeleteHandler = id => {
+       
+    //   //   axioswithauth()
+    //   setExercise(exercise.filter(exr => exr.id !== id))
+    // }
+
+    // const [editing, setEditing] = useState(false);
+    // const initialFormState = {  date: '',
+    // muscle_group: '',
+    // exercise_name: '',
+    // weight_number: '',
+    // sets: '',
+    // reps: '',
+    // goals: ''};
+    // const [currentForm, setCurrentForm] = useState(initialFormState);
+
+    // const EditForm = form => {
+    //    setEditing(false);
+    //   setCurrentForm({date: '',
+    //   muscle_group: form.muscle_group,
+    //   exercise_name: form.exercise_name,
+    //   weight_number: form.weight_number,
+    //   sets: form.sets,
+    //   reps: form.reps,
+    //   goals: form.goals})
+    // }
+  
     
     return (
         <div>
