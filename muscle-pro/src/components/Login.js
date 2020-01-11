@@ -55,11 +55,9 @@ const Login = ({ history, userName, setUserName }) => {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem('id', res.data.user_id)
             history.push("/WelcomePage");
-            setUserName({user: '', password: '' });
+            setUserName({username: '', password: '' });
           })
           .catch(err => console.error(err));
-        //history.push('/WelcomePage');
-        //setUserName({user: '', password: '' });
     };
 
     console.log('this is assigned userName object: ', {userName});
@@ -69,9 +67,9 @@ const Login = ({ history, userName, setUserName }) => {
     return (
         <div>
             <nav>
-                <Link to='/newUser'>New User? Register Here</Link>
+                <Link className='link' to='/newUser'>New User? Register Here</Link>
             </nav>
-            <FormHeading>Current User Log In</FormHeading>
+            <FormHeading>User Log In</FormHeading>
             <FormSetup onSubmit={handleSubmit(submitForm)}>
                 <label htmlFor='username'>User Name</label>
                 <EnterInput

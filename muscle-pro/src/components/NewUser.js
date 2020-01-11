@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import axiosWithAuth from './axiosWithAuth';
 import WelcomePage from './WelcomePage';
 import styled from 'styled-components';
@@ -49,17 +50,16 @@ const { register, handleSubmit, errors } = useForm();
     const submitForm = event => {
         //event.preventDefault();
         //history.push(`/WelcomePage/${userName.username}`);
-            //e.preventDefault();
-            axiosWithAuth()
-                .post('https://todoappp1.herokuapp.com/api/auth/register', userName)
+            axios
+                .post('https://weight-lifting1.herokuapp.com/api/auth/register', userName)
                 .then(res => {
                     console.log(res)
                     axiosWithAuth().post('https://weight-lifting1.herokuapp.com/api/auth/login', userName)
                         .then(res =>
                             localStorage.setItem('token', res.data.token),
-                            localStorage.setItem('id', res.data.user_id),
-                            history.push('/WelcomePage')
-                            )
+                            history.push('/WelcomePage'),
+                            setUserName({username: '', password: ''})
+                        )
                 })
     };
 
@@ -69,7 +69,7 @@ const { register, handleSubmit, errors } = useForm();
     return (
         <div>
             <nav>
-                <Link to='/'>Back to Login</Link>
+                <Link className='link' to='/'>Back to Login</Link>
             </nav>
             <FormHeading>New User Registration</FormHeading>
             <FormSetup onSubmit={handleSubmit(submitForm)}>

@@ -1,3 +1,7 @@
+body {
+  background-color: coral;
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +18,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: dodgerblue;
   min-height: 25vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +39,21 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.navLinks {
+  color: black;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.linkTwo {
+  color: white;
+  text-decoration: none;
 }

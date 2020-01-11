@@ -57,9 +57,9 @@ const Exercises = ({ addNewExercise, history }) => {
     
     return (
         <div>
-            <nav>
-                <Link to='/WelcomePage'>Back to Results Page</Link>
-                <Link to='/'>Logout</Link>
+            <nav className='navLinks'>
+                <Link className='linkTwo' to='/WelcomePage'>Back to Results Page</Link>
+                <Link className='linkTwo' to='/'>Logout</Link>
             </nav>
             <FormHeading>Enter Exercise Information</FormHeading>
             <FormSetup onSubmit={submitForm}>
@@ -126,7 +126,7 @@ const Exercises = ({ addNewExercise, history }) => {
                     onChange={handleChange}
                     value={exercise.goals}
                 />
-                <LoginButton type='submit'>Submit Exercise Entry</LoginButton>
+                <LoginButton type='submit'>Add Exercise</LoginButton>
             </FormSetup>
         </div>
     );

@@ -68,12 +68,12 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
     return (
         <div>
             <header>
-                <h1>Muscle Pro</h1>
-                <h2>Weight Lifting Journal</h2>
+                <h1>Weight Lifting Journal</h1>
+                <h2>Journal Entries</h2>
             </header>
-            <nav>
-                <Link to='/Exercises'>Add New Exercises</Link>
-                <Link to='/'>Logout</Link>
+            <nav className='navLinks'>
+                <Link className='linkTwo' to='/Exercises'>Add New Exercises</Link>
+                <Link className='linkTwo' to='/'>Logout</Link>
             </nav>
           {/*  <Exercises addNewExercise={addNewExercise} /> */}
             {/* exercises.map over data here and render to UI */}
