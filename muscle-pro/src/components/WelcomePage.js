@@ -28,70 +28,96 @@ const Info = styled.ul `
 const ListItems = styled.li `
   color: white;
 `;
+
+const Form = styled.form`
+  /* padding: 15%; */
+`;
+
 // end styled-components
 
 const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises }) => {
 
+const [exerciseEdit, setExerciseEdit] = useState();
 
-  useEffect(() => {
-    axiosWithAuth()
-    .get(`https://weight-lifting1.herokuapp.com/api/user/all`)
-      .then(response => {
-        console.log(response.data);
-        setExercises(response.data);
-      })
-      .catch(error => {
-        console.log("Did not connect to API", error);
-      })
-  }, []);
 
-  const DeleteHandler = e => {
-      e.preventDefault();
-    //   axioswithauth()
-  }
-
-  const EditHandler = e => {
-    e.preventDefault();
-
-    axiosWithAuth()
-    .put(`https://weight-lifting1.herokuapp.com/api/user/update/`)
-    .then(res => {
-        console.log(res)
+useEffect(() => {
+  axiosWithAuth()
+  .get(`https://weight-lifting1.herokuapp.com/api/user/all`)
+    .then(response => {
+      console.log(response.data);
+      setExercises(response.data);
     })
-    .catch(err => console.log(err))
+    .catch(error => {
+      console.log("Did not connect to API", error);
+    })
+}, []);
+const [display, setDisplay] = useState('no-display');
+const changeClass = e => {
+  if (setDisplay('display')) {
+    setDisplay('no-display')
+  } else {
+    setDisplay('display')
   }
-
-    return (
-        <div>
-            <header>
-                <h1>Muscle Pro</h1>
-                <h2>Weight Lifting Journal</h2>
-            </header>
-            <nav>
-                <Link to='/Exercises'>Add New Exercises</Link>
-                <Link to='/'>Logout</Link>
-                
-            </nav>
-            {exercises.map(exercise => {
-                return (
-                    <Card>
-                        <Date>Date: {exercise.date}</Date>
-                        <Info>
-                            <ListItems>Muscle Group: {exercise.muscle_group}</ListItems>
-                            <ListItems>Name of Exercise: {exercise.exercise_name}</ListItems>
-                            <ListItems>Weight Lifted: {exercise.weight_number}</ListItems>
-                            <ListItems>Sets: {exercise.sets}</ListItems>
-                            <ListItems>Reps: {exercise.reps}</ListItems>
-                            <ListItems>Goals: {exercise.goals}</ListItems>
-                        </Info>
-                        <button onClick={DeleteHandler}>delete</button>
-                        <button onClick={EditHandler}>edit</button>
-                    </Card>
-                )
-            })}
-            
-        </div>
-    );
+}
+const changeExercise = e => {
+  
+}
+  return (
+      <div>
+          <header>
+              <h1>Muscle Pro</h1>
+              <h2>Weight Lifting Journal</h2>
+          </header>
+          <nav>
+              <Link to='/Exercises'>Add New Exercises</Link>
+              <Link to='/'>Logout</Link>
+          </nav>
+        {/*  <Exercises addNewExercise={addNewExercise} /> */}
+          {/* exercises.map over data here and render to UI */}
+          {exercises.map(exercise => {
+       
+              return (
+                  <Card>
+                      <Date>Date: {exercise.date}</Date>
+                      <Info>
+                          <ListItems>Muscle Group: {exercise.muscle_group}</ListItems>
+                          <ListItems>Name of Exercise: {exercise.exercise_name}</ListItems>
+                          <ListItems>Weight Lifted: {exercise.weight_number}</ListItems>
+                          <ListItems>Sets: {exercise.sets}</ListItems>
+                          <ListItems>Reps: {exercise.reps}</ListItems>
+                          <ListItems>Goals: {exercise.goals}</ListItems>
+                      </Info>
+                  
+                  <Form className={display}>
+                    <input
+                      value={exercise.muscle_group}
+                    />
+                    <input
+                      value={exercise.exercise_name}
+                    />
+                    <input
+                      value={exercise.weight_number}
+                    />
+                    <input
+                      value={exercise.sets}
+                    />
+                    <input
+                      value={exercise.reps}
+                    />
+                    <input
+                      value={exercise.goals}
+                      
+                    />
+                    <button onSubmit={changeExercise}>Submit Changes</button>
+                    
+                  </Form>
+                  <button onClick={changeClass} >Edit</button>
+                  <button>delete</button>
+                  </Card>
+           
+              )
+          })}
+      </div>
+  );
 };
-
 export  default WelcomePage;
