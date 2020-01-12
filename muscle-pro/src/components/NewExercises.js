@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
 // styled-components
@@ -26,7 +27,7 @@ const LoginButton = styled.button `
 `;
 // end styled-components
 
-const Exercises = ({ addNewExercise, history }) => {
+const NewExercises = ({ addNewExercise, history }) => {
     
     const [exercise, setExercise] = useState({
         date: '',
@@ -38,6 +39,8 @@ const Exercises = ({ addNewExercise, history }) => {
         goals: ''
     });
 
+    const { register, handleSubmit, errors } = useForm();
+
     const handleChange = event => {
         //console.log('event', event.target.value);
 
@@ -46,10 +49,10 @@ const Exercises = ({ addNewExercise, history }) => {
     };
 
     const submitForm = event => {
-        event.preventDefault();
+        //event.preventDefault();
         //history.push(`/WelcomePage/${userName}`);
         addNewExercise(exercise);
-        history.push('/WelcomePage');
+        history.push('/NewWelcomePage');
         setExercise({date: '', muscle_group: '', exercise_name: '', weight_number: '', sets: '', reps: '', goals: ''});
     };
     
@@ -58,11 +61,11 @@ const Exercises = ({ addNewExercise, history }) => {
     return (
         <div>
             <nav className="navLinks">
-                <Link className="linkTwo" to='/WelcomePage'>Back to Results Page</Link>
+                <Link className="linkTwo" to='/NewWelcomePage'>Back to Results Page</Link>
                 <Link className="linkTwo" to='/'>Logout</Link>
             </nav>
             <FormHeading>Enter Exercise Information</FormHeading>
-            <FormSetup onSubmit={submitForm}>
+            <FormSetup onSubmit={handleSubmit(submitForm)}>
                 <label htmlFor='date'>Date</label>
                 <EnterInput
                     id='date'
@@ -71,7 +74,11 @@ const Exercises = ({ addNewExercise, history }) => {
                     placeholder='Enter Date'
                     onChange={handleChange}
                     value={exercise.date}
+                    ref={register({ required: true })}
                 />
+                {errors.date && errors.date.type === 'required' && (
+                    <p>This is required</p>
+                )}
                 <label htmlFor='muscle_group'>Muscle Group</label>
                 <EnterInput
                     id='muscle_group'
@@ -80,7 +87,11 @@ const Exercises = ({ addNewExercise, history }) => {
                     placeholder='Enter Muscle Group'
                     onChange={handleChange}
                     value={exercise.muscle_group}
+                    ref={register({ required: true })}
                 />
+                {errors.muscle_group && errors.muscle_group.type === 'required' && (
+                    <p>This is required</p>
+                )}
                 <label htmlFor='exercise_name'>Exercise Name</label>
                 <EnterInput
                     id='exercise_name'
@@ -89,7 +100,11 @@ const Exercises = ({ addNewExercise, history }) => {
                     placeholder='Enter Exercise Name'
                     onChange={handleChange}
                     value={exercise.exercise_name}
+                    ref={register({ required: true })}
                 />
+                {errors.exercise_name && errors.exercise_name.type === 'required' && (
+                    <p>This is required</p>
+                )}
                 <label htmlFor='weight_number'>Weight Lifted</label>
                 <EnterInput
                     id='weight_number'
@@ -98,7 +113,11 @@ const Exercises = ({ addNewExercise, history }) => {
                     placeholder='Enter Weight'
                     onChange={handleChange}
                     value={exercise.weight_number}
+                    ref={register({ required: true })}
                 />
+                {errors.weight_number && errors.weight_number.type === 'required' && (
+                    <p>This is required</p>
+                )}
                 <label htmlFor='sets'>Number of Sets</label>
                 <EnterInput
                     id='sets'
@@ -107,7 +126,11 @@ const Exercises = ({ addNewExercise, history }) => {
                     placeholder='Enter Num Sets'
                     onChange={handleChange}
                     value={exercise.sets}
+                    ref={register({ required: true })}
                 />
+                {errors.sets && errors.sets.type === 'required' && (
+                    <p>This is required</p>
+                )}
                 <label htmlFor='reps'>Repetitions</label>
                 <EnterInput
                     id='reps'
@@ -116,7 +139,11 @@ const Exercises = ({ addNewExercise, history }) => {
                     placeholder='Enter Num Reps'
                     onChange={handleChange}
                     value={exercise.reps}
+                    ref={register({ required: true })}
                 />
+                {errors.reps && errors.reps.type === 'required' && (
+                    <p>This is required</p>
+                )}
                 <label htmlFor='goals'>Exercise Goals</label>
                 <EnterInput
                     id='goals'
@@ -125,11 +152,15 @@ const Exercises = ({ addNewExercise, history }) => {
                     placeholder='Enter Goals'
                     onChange={handleChange}
                     value={exercise.goals}
+                    ref={register({ required: true })}
                 />
+                {errors.goals && errors.goals.type === 'required' && (
+                    <p>This is required</p>
+                )}
                 <LoginButton type='submit'>Submit Exercise</LoginButton>
             </FormSetup>
         </div>
     );
 };
 
-export default Exercises;
+export default NewExercises;

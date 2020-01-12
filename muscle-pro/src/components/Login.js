@@ -58,6 +58,8 @@ const Login = ({ history, userName, setUserName }) => {
             setUserName({username: '', password: '' });
           })
           .catch(err => console.error(err));
+        //history.push('/WelcomePage');
+        //setUserName({username: '', password: '' });
     };
 
     console.log('this is assigned userName object: ', {userName});
@@ -67,7 +69,7 @@ const Login = ({ history, userName, setUserName }) => {
     return (
         <div>
             <nav>
-                <Link className='link' to='/newUser'>New User? Register Here</Link>
+                <Link className="link" to='/newUser'>New User? Register Here</Link>
             </nav>
             <FormHeading>User Log In</FormHeading>
             <FormSetup onSubmit={handleSubmit(submitForm)}>

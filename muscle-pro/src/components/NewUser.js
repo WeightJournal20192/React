@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
-import axiosWithAuth from './axiosWithAuth';
-import WelcomePage from './WelcomePage';
+//import axios from 'axios';
+//import axiosWithAuth from './axiosWithAuth';
+import NewWelcomePage from './NewWelcomePage';
 import styled from 'styled-components';
 
 // styled-components
@@ -50,17 +50,20 @@ const { register, handleSubmit, errors } = useForm();
     const submitForm = event => {
         //event.preventDefault();
         //history.push(`/WelcomePage/${userName.username}`);
-            axios
+            //e.preventDefault();
+    /*        axios
                 .post('https://weight-lifting1.herokuapp.com/api/auth/register', userName)
                 .then(res => {
                     console.log(res)
                     axiosWithAuth().post('https://weight-lifting1.herokuapp.com/api/auth/login', userName)
                         .then(res =>
                             localStorage.setItem('token', res.data.token),
-                            history.push('/WelcomePage'),
-                            setUserName({username: '', password: ''})
-                        )
+                            history.push('/WelcomePage')
+                            )
                 })
+    */
+        history.push("/NewWelcomePage");
+        setUserName({username: '', password: '' });
     };
 
     console.log('this is assigned userName Object: ', {userName});
@@ -69,7 +72,7 @@ const { register, handleSubmit, errors } = useForm();
     return (
         <div>
             <nav>
-                <Link className='link' to='/'>Back to Login</Link>
+                <Link className="link" to='/'>Back to Login</Link>
             </nav>
             <FormHeading>New User Registration</FormHeading>
             <FormSetup onSubmit={handleSubmit(submitForm)}>

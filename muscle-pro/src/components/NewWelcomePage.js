@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axiosWithAuth from './axiosWithAuth';
-import Exercises from './Exercises';
-import axios from 'axios';
+//import axiosWithAuth from './axiosWithAuth';
+import NewExercises from './NewExercises';
+//import axios from 'axios';
 import styled from 'styled-components';
 
 // styled-components
@@ -29,7 +29,7 @@ const ListItems = styled.li `
 `;
 // end styled-components
 
-const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises }) => {
+const NewWelcomePage = ({ userName, setUserName, exercise, exercises, setExercises }) => {
     
     // set default exercise values to state
   //  const [exercises, setExercises] = useState([]);
@@ -52,7 +52,7 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
     setExercises(newExerciseArray);
   };
   */
-
+/*
   useEffect(() => {
     axiosWithAuth()
     .get(`https://weight-lifting1.herokuapp.com/api/user/all`)
@@ -64,7 +64,7 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
         console.log("Did not connect to API", error);
       })
   }, []);
-
+*/
     return (
         <div>
             <header>
@@ -72,7 +72,7 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
                 <h2>Journal Entries</h2>
             </header>
             <nav className="navLinks">
-                <Link className="linkTwo" to='/Exercises'>Add New Exercises</Link>
+                <Link className="linkTwo" to='/NewExercises'>Add New Exercises</Link>
                 <Link className="linkTwo" to='/'>Logout</Link>
             </nav>
           {/*  <Exercises addNewExercise={addNewExercise} /> */}
@@ -96,4 +96,4 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
     );
 };
 
-export  default WelcomePage;
+export  default NewWelcomePage;

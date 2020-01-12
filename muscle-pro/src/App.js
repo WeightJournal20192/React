@@ -4,6 +4,8 @@ import Login from './components/Login';
 import NewUser from './components/NewUser';
 import WelcomePage from './components/WelcomePage';
 import Exercises from './components/Exercises';
+import NewWelcomePage from './components/NewWelcomePage';
+import NewExercises from './components/NewExercises';
 //import { userName } from './components/Login';
 //import { addNewExercise } from './components/WelcomePage';
 import './App.css';
@@ -58,6 +60,16 @@ setExercises(newExerciseArray);
       <Route
         exact path='/Exercises' render={routeProps => {
           return <Exercises {...routeProps} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
+        }}
+      />
+      <Route
+        exact path='/NewWelcomePage' render={routeProps => {
+          return <NewWelcomePage {...routeProps} userName={userName} setUserName={setUserName} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
+        }}
+      />
+      <Route
+        exact path='/NewExercises' render={routeProps => {
+          return <NewExercises {...routeProps} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
         }}
       />
     </div>
