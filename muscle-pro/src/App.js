@@ -4,8 +4,9 @@ import Login from './components/Login';
 import NewUser from './components/NewUser';
 import WelcomePage from './components/WelcomePage';
 import Exercises from './components/Exercises';
-//import { userName } from './components/Login';
-//import { addNewExercise } from './components/WelcomePage';
+import NewWelcomePage from './components/NewWelcomePage';
+import NewExercises from './components/NewExercises';
+import Banner from './Images/banner-image.jpeg';
 import './App.css';
 
 function App() {
@@ -38,7 +39,9 @@ setExercises(newExerciseArray);
   return (
     <div className="App">
       <header className="App-header">
+        <img className="banner-image" src={Banner} />
         <h1>Muscle Pro</h1>
+        <h4>Live. Laugh. Lift.</h4>
       </header>
       <Route
         exact path='/' render={routeProps => {
@@ -58,6 +61,16 @@ setExercises(newExerciseArray);
       <Route
         exact path='/Exercises' render={routeProps => {
           return <Exercises {...routeProps} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
+        }}
+      />
+            <Route
+        exact path='/NewWelcomePage' render={routeProps => {
+          return <NewWelcomePage {...routeProps} userName={userName} setUserName={setUserName} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
+        }}
+      />
+      <Route
+        exact path='/NewExercises' render={routeProps => {
+          return <NewExercises {...routeProps} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
         }}
       />
     </div>

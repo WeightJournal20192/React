@@ -5,7 +5,12 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 // styled-components
-const Card = styled.div `
+const Container = styled.section`
+    padding-top: 25px;
+    background: #d9d7d6
+`
+
+const Card = styled.div`
   border: solid black 2px;
   margin: 50px 250px 50px 250px;
   display: flex;
@@ -14,16 +19,16 @@ const Card = styled.div `
   background-color: blue;
 `;
 
-const Date = styled.h1 `
+const Date = styled.h1`
   color: yellow;
   font-weight: bold;
 `;
 
-const Info = styled.ul `
+const Info = styled.ul`
   list-style-type: none;
 `;
 
-const ListItems = styled.li `
+const ListItems = styled.li`
   color: white;
 `;
 // end styled-components
@@ -64,33 +69,34 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
   }, []);
 
     return (
-        <div>
-            <header>
-                <h1>Muscle Pro</h1>
-                <h2>Weight Lifting Journal</h2>
-            </header>
-            <nav>
-                <Link to='/Exercises'>Add New Exercises</Link>
-                <Link to='/'>Logout</Link>
-            </nav>
-          {/*  <Exercises addNewExercise={addNewExercise} /> */}
-            {/* exercises.map over data here and render to UI */}
-            {exercises.map(exercise => {
-                return (
-                    <Card>
-                        <Date>Date: {exercise.date}</Date>
-                        <Info>
-                            <ListItems>Muscle Group: {exercise.muscle_group}</ListItems>
-                            <ListItems>Name of Exercise: {exercise.exercise_name}</ListItems>
-                            <ListItems>Weight Lifted: {exercise.weight_number}</ListItems>
-                            <ListItems>Sets: {exercise.sets}</ListItems>
-                            <ListItems>Reps: {exercise.reps}</ListItems>
-                            <ListItems>Goals: {exercise.goals}</ListItems>
-                        </Info>
-                    </Card>
-                )
-            })}
-        </div>
+        <Container>
+            <div>
+                <header>
+                    <h2>Weight Lifting Journal</h2>
+                </header>
+                <nav>
+                    <Link to='/Exercises'>Add New Exercises</Link>
+                    <Link to='/'>Logout</Link>
+                </nav>
+            {/*  <Exercises addNewExercise={addNewExercise} /> */}
+                {/* exercises.map over data here and render to UI */}
+                {exercises.map(exercise => {
+                    return (
+                        <Card>
+                            <Date>Date: {exercise.date}</Date>
+                            <Info>
+                                <ListItems>Muscle Group: {exercise.muscle_group}</ListItems>
+                                <ListItems>Name of Exercise: {exercise.exercise_name}</ListItems>
+                                <ListItems>Weight Lifted: {exercise.weight_number}</ListItems>
+                                <ListItems>Sets: {exercise.sets}</ListItems>
+                                <ListItems>Reps: {exercise.reps}</ListItems>
+                                <ListItems>Goals: {exercise.goals}</ListItems>
+                            </Info>
+                        </Card>
+                    )
+                })}
+            </div>
+        </Container>
     );
 };
 
