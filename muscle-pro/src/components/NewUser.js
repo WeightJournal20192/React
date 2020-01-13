@@ -84,6 +84,20 @@ const { register, handleSubmit, errors } = useForm();
         //history.push(`/WelcomePage/${userName.username}`);
         history.push('/WelcomePage');
         setUserName({user: '', password: '' });
+            //e.preventDefault();
+    /*        axios
+                .post('https://weight-lifting1.herokuapp.com/api/auth/register', userName)
+                .then(res => {
+                    console.log(res)
+                    axiosWithAuth().post('https://weight-lifting1.herokuapp.com/api/auth/login', userName)
+                        .then(res =>
+                            localStorage.setItem('token', res.data.token),
+                            history.push('/WelcomePage')
+                            )
+                })
+    */
+        history.push("/NewWelcomePage");
+        setUserName({username: '', password: '' });
     };
 
     console.log('this is assigned userName Object: ', {userName});

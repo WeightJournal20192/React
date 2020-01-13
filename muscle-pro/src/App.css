@@ -1,3 +1,7 @@
+body {
+  background-color: orangered;
+}
+
 .App {
   text-align: center;
 }
@@ -36,5 +40,19 @@ h4 {
   margin-bottom: 0px;
 }
 
+.link {
+  color: black;
+  text-decoration: none;
+}
 
+.navLinks {
+  color: black;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
 
+.linkTwo {
+  color: white;
+  text-decoration: none;
+}

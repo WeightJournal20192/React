@@ -63,7 +63,7 @@ setExercises(newExerciseArray);
           return <Exercises {...routeProps} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
         }}
       />
-            <Route
+      <Route
         exact path='/NewWelcomePage' render={routeProps => {
           return <NewWelcomePage {...routeProps} userName={userName} setUserName={setUserName} addNewExercise={addNewExercise} exercises={exercises} setExercises={setExercises} />
         }}
