@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Exercises from './Exercises';
 import axios from 'axios';
+import axiosWithAuth from './axiosWithAuth';
 import styled, { css } from 'styled-components';
 
 // styled-components
