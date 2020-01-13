@@ -6,7 +6,8 @@ import WelcomePage from './components/WelcomePage';
 import Exercises from './components/Exercises';
 import NewWelcomePage from './components/NewWelcomePage';
 import NewExercises from './components/NewExercises';
-import Banner from './Images/banner-image.jpeg';
+//import { userName } from './components/Login';
+//import { addNewExercise } from './components/WelcomePage';
 import './App.css';
 
 function App() {
@@ -39,9 +40,7 @@ setExercises(newExerciseArray);
   return (
     <div className="App">
       <header className="App-header">
-        <img className="banner-image" src={Banner} />
         <h1>Muscle Pro</h1>
-        <h4>Live. Laugh. Lift.</h4>
       </header>
       <Route
         exact path='/' render={routeProps => {

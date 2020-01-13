@@ -6,61 +6,26 @@ import WelcomePage from './WelcomePage';
 import styled from 'styled-components';
 
 // styled-components
-
-const Container = styled.div`
-    padding-top: 25px;
-    background: #d9d7d6
-`
-
-const StyledLink = styled(Link)`
-    color: #282c34;
-        &:hover {color: #FFC300;}
-    font-size: 1.75rem;
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    font-weight: bold;
-    text-decoration: none;
-`;
-
-const FormHeading = styled.h2`
-    font-size: 2rem;
-    color: #282c34;
-    margin-top: 30px;
+const FormHeading = styled.h2 `
+    margin-top: 40px;
     margin-bottom: 20px;
 `;
 
-const FormSetup = styled.form`
+const FormSetup = styled.form `
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #282c34;
-    font-size: 1.15rem;
-    font-weight: 600;
+    margin-top: 40px;
 `;
 
-const EnterInput = styled.input`
-    width: 12%;
-    height: 2vh;
-    margin-top: 10px;
-    margin-bottom: 5px;
+const EnterInput = styled.input `
+    margin-top: 20px;
+    margin-bottom: 20px;
 `;
 
-const Error = styled.p`
-    margin-top: 0px;
-    font-size: 1rem;
-    color: #ed2b38;
-`
-
-const LoginButton = styled.button`
-    margin-top: 15px;
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 1.3rem;
-    background: #FFC300;
-    border: 1px solid #333;
-    border-radius: 5px;
-    width: 12%;
-    height: 5vh;
+const LoginButton = styled.button `
+    margin-top: 30px;
 `;
 // end styled-components
 
@@ -84,8 +49,6 @@ const Login = ({ history, userName, setUserName }) => {
     const submitForm = event => {
         //event.preventDefault();
         //history.push(`/WelcomePage/${userName.username}`);
-        history.push('/WelcomePage');
-        setUserName({user: '', password: '' });
         axios
           .post("https://weight-lifting1.herokuapp.com/api/auth/login", userName)
           .then(res => {
@@ -104,50 +67,48 @@ const Login = ({ history, userName, setUserName }) => {
     console.log('this is assigned password: ', userName.password);
     
     return (
-        <Container>
-            <div>
-                <StyledLink>
-                    <Link to='/newUser'>Create Account</Link>
-                </StyledLink>
-                <FormHeading>Current User Log In</FormHeading>
-                <FormSetup onSubmit={handleSubmit(submitForm)}>
-                    <label htmlFor='username'>User Name</label>
-                    <EnterInput
-                        id='username'
-                        type='text'
-                        name='username'
-                        placeholder='Minimum 5 Characters'
-                        onChange={handleChange}
-                        value={userName.username}
-                        ref={register({ required: true, minLength: 5 })}
-                    />
-                    {errors.username && errors.username.type === 'required' && (
-                        <Error>Username required.</Error>
-                    )}
-                    {errors.username && errors.username.type === 'minLength' && (
-                        <Error>Must be 5 characters in length</Error>
-                    )}
-                    <label htmlFor='password'>Password</label>
-                    <EnterInput
-                        id='password'
-                        type='password'
-                        name='password'
-                        placeholder='Minimum 5 Characters'
-                        onChange={handleChange}
-                        value={userName.password}
-                        ref={register({ required: true, minLength: 5 })}
-                    />
-                    {errors.password && errors.password.type === 'required' && (
-                        <Error>Password required.</Error>
-                    )}
-                    {errors.password && errors.password.type === 'minLength' && (
-                        <Error>Must be 5 characters in length</Error>
-                    )}
-                    <LoginButton type='submit'>Log In</LoginButton>
-                </FormSetup>
-            {/*<WelcomePage id={userName.username} /> */}
-            </div>
-        </Container>
+        <div>
+            <nav>
+                <Link className="link" to='/newUser'>New User? Register Here</Link>
+            </nav>
+            <FormHeading>User Log In</FormHeading>
+            <FormSetup onSubmit={handleSubmit(submitForm)}>
+                <label htmlFor='username'>User Name</label>
+                <EnterInput
+                    id='username'
+                    type='text'
+                    name='username'
+                    placeholder='Minimum 5 Characters'
+                    onChange={handleChange}
+                    value={userName.username}
+                    ref={register({ required: true, minLength: 5 })}
+                />
+                {errors.username && errors.username.type === 'required' && (
+                    <p>This is required</p>
+                )}
+                {errors.username && errors.username.type === 'minLength' && (
+                    <p>Must be 5 characters in length</p>
+                )}
+                <label htmlFor='password'>Password</label>
+                <EnterInput
+                    id='password'
+                    type='password'
+                    name='password'
+                    placeholder='Minimum 5 Characters'
+                    onChange={handleChange}
+                    value={userName.password}
+                    ref={register({ required: true, minLength: 5 })}
+                />
+                {errors.password && errors.password.type === 'required' && (
+                    <p>This is required</p>
+                )}
+                {errors.password && errors.password.type === 'minLength' && (
+                    <p>Must be 5 characters in length</p>
+                )}
+                <LoginButton type='submit'>Log In</LoginButton>
+            </FormSetup>
+           {/*<WelcomePage id={userName.username} /> */}
+        </div>
     );
 };
 
