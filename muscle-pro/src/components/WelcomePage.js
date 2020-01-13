@@ -2,26 +2,45 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Exercises from './Exercises';
 import axios from 'axios';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // styled-components
 const Container = styled.section`
-    padding-top: 25px;
-    background: #d9d7d6
+    padding-top: 15px;
+    padding-bottom: 25px;
+    margin: 0px;
+    background-color: #d9d7d6;
+`
+
+const Nav = styled(Link)`
+    color: #282c34;
+    &:hover {color: #FFC300;}
+    font-size: 1.25rem;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
 `
 
 const Card = styled.div`
   border: solid black 2px;
-  margin: 50px 250px 50px 250px;
+  border-radius: 7px;
+  margin: 30px 250px 0px 250px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: blue;
-`;
+  color: #FFC300;
+  background-color: #282c34;
+`
 
 const Date = styled.h1`
-  color: yellow;
+  color: #FFC300;
   font-weight: bold;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 `;
 
 const Info = styled.ul`
@@ -29,7 +48,8 @@ const Info = styled.ul`
 `;
 
 const ListItems = styled.li`
-  color: white;
+  color: #FFC300;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 `;
 // end styled-components
 
@@ -70,14 +90,13 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
 
     return (
         <Container>
-            <div>
                 <header>
                     <h2>Weight Lifting Journal</h2>
                 </header>
-                <nav>
+                <Nav>
                     <Link to='/Exercises'>Add New Exercises</Link>
-                    <Link to='/'>Logout</Link>
-                </nav>
+                    <Link to='/'>Logout</Link> 
+                </Nav>  
             {/*  <Exercises addNewExercise={addNewExercise} /> */}
                 {/* exercises.map over data here and render to UI */}
                 {exercises.map(exercise => {
@@ -95,7 +114,6 @@ const WelcomePage = ({ userName, setUserName, exercise, exercises, setExercises 
                         </Card>
                     )
                 })}
-            </div>
         </Container>
     );
 };
