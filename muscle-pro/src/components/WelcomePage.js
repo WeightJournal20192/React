@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import axiosWithAuth from './axiosWithAuth';
 import Exercises from './Exercises';
 import axios from 'axios';
+<<<<<<< HEAD
 import styled from 'styled-components';
+=======
+import axiosWithAuth from './axiosWithAuth';
+import styled, { css } from 'styled-components';
+>>>>>>> d5b9b4c113bd1507314002bbba25b1734426d461
 
 // styled-components
 const Card = styled.div `
