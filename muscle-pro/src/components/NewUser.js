@@ -96,7 +96,7 @@ const { register, handleSubmit, errors } = useForm();
                             )
                 })
     */
-        history.push("/NewWelcomePage");
+        history.push("/WelcomePage");
         setUserName({username: '', password: '' });
     };
 

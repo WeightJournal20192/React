@@ -10,13 +10,6 @@ const Container = styled.section`
     background-color: #d9d7d6;
 `
 
-const FormHeading = styled.h2`
-    font-size: 2rem;
-    color: #282c34;
-    margin-top: 30px;
-    margin-bottom: 20px;
-`
-
 const Nav = styled(Link)`
     color: #282c34;
     &:hover {color: #FFC300;}
@@ -29,6 +22,13 @@ const Nav = styled(Link)`
     width: 30%;
     margin-left: 35%;
     margin-right: 35%;
+`
+
+const FormHeading = styled.h2`
+    font-size: 2rem;
+    color: #282c34;
+    margin-top: 30px;
+    margin-bottom: 20px;
 `
 
 const FormSetup = styled.form`
